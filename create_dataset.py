@@ -5,7 +5,6 @@ import pickle
 
 # This class is designed to extract the data out of Julian McAuley dataset
 class DataProvider:
-    neutral = 3
 
     def __init__(self, category):
         self.category = category
