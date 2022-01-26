@@ -21,6 +21,8 @@ if __name__ == '__main__':
     rdp = ReviewDataProvider(args.data_dir, args.category)
     reviews, labels = rdp.construct_dataset(args.reviews_per_class)
     X_train, y_train, X_test, y_test = utils.load_existing_dataset(args.data_dir, args.category)
+    print(X_train)
+    print(y_train)
 
     # clf_for_category = fill_category_classifier_dict(categories, 1, 10, "LinearSVC")
     # in_domain_results = fill_in_domain_performance_dict(categories, clf_for_category, 1, 10)
