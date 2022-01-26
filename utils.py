@@ -4,7 +4,7 @@ from sklearn.metrics import mutual_info_score
 
 
 def load_existing_dataset(data_dir, category):
-    reviews_pattern = os.path.join(data_dir, "/X_" + category + "_5.pkl")
+    reviews_pattern = os.path.join(data_dir, "X_" + category + "_5.pkl")
     labels_pattern = os.path.join(data_dir, "y_" + category + "_5.pkl")
     with open(reviews_pattern, 'rb') as f:
         reviews = pickle.load(f)
