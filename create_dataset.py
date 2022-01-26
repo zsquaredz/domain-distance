@@ -39,7 +39,7 @@ class DataProvider:
 class ReviewDataProvider(DataProvider):
     def __init__(self, data_dir, category):
         super().__init__(category)
-        self.data_path = os.path.join(data_dir, "reviews_{}_5.json.gz".format(self.category))
+        self.data_path = os.path.join(data_dir, "{}.json.gz".format(self.category))
         self.reviews_path = os.path.join(data_dir, "X_{}_5.pkl".format(self.category))
         self.labels_path = os.path.join(data_dir, "y_{}_5.pkl".format(self.category))
 
