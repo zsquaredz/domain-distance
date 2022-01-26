@@ -74,6 +74,16 @@ class ReviewDataProvider(DataProvider):
             for i in range(len(reviews)):
                 data = {'text':reviews[i], 'label':labels[i]}
                 f.write(json.dumps(data) + '\n')
+    
+    def create_txt(self, reviews, labels, review_filename, label_filename):
+        txt_path = os.path.join(self.data_dir, review_filename)
+        label_path = os.path.join(self.data_dir, label_filename)
+        assert len(reviews) == len(labels)
+        with open(txt_path, 'w', encoding='utf-8') as f,\
+            open(label_path, 'w', encoding='utf-8') as f_label:
+            for i in range(len(reviews)):
+                f.write(reviews[i] + '\n')
+                f_label.write(labels[i] + '\n')
 
 
     def construct_dataset(self, sample_size):

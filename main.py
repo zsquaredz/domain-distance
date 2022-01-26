@@ -21,8 +21,10 @@ if __name__ == '__main__':
     rdp = ReviewDataProvider(args.data_dir, args.category)
     reviews, labels = rdp.construct_dataset(args.reviews_per_class)
     X_train, y_train, X_test, y_test = utils.load_existing_dataset(args.data_dir, args.category)
-    rdp.create_json(X_train, y_train, 'Train_'+args.category+'.json')
-    rdp.create_json(X_test, y_test, 'Test_'+args.category+'.json')
+    # rdp.create_json(X_train, y_train, 'Train_'+args.category+'.json')
+    rdp.create_txt(X_train, y_train, 'Train_'+args.category+'.txt', 'Train_'+args.category+'_label.txt')
+    # rdp.create_json(X_test, y_test, 'Test_'+args.category+'.json')
+    rdp.create_txt(X_test, y_test, 'Test_'+args.category+'.txt', 'Test_'+args.category+'_label.txt')
     # print(X_train)
     # print(y_train)
 
