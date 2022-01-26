@@ -18,6 +18,7 @@ class DataProvider:
         # for memory issues
         max_extract = 10000000
         count = 0
+        print(path)
         g = gzip.open(path, 'rb')
         for l in g:
             if count < max_extract:
