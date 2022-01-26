@@ -9,6 +9,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="data")
     parser.add_argument("--category", type=str, default='Books', help="category")
     parser.add_argument("--data_dir", type=str, default='./data/', help="Directory of data")
+    parser.add_argument("--reviews_per_class", type=int, default=1000, help="Number of reviews per class")
     args = parser.parse_args()
     categories = ["Books", "Electronics", "Movies_and_TV", "CDs_and_Vinyl", "Clothing_Shoes_and_Jewelry",
                   "Home_and_Kitchen", "Kindle_Store", "Sports_and_Outdoors", "Cell_Phones_and_Accessories",
@@ -17,9 +18,8 @@ if __name__ == '__main__':
                   "Grocery_and_Gourmet_Food", "Patio_Lawn_and_Garden", "Baby", "Digital_Music", "Amazon_Instant_Video"]
     
     assert args.category in categories
-    reviews_per_class = 1000
     rdp = ReviewDataProvider(args.data_dir, args.category)
-    reviews, labels = rdp.construct_dataset(reviews_per_class)
+    reviews, labels = rdp.construct_dataset(args.reviews_per_class)
     X_train, y_train, X_test, y_test = utils.load_existing_dataset(args.data_dir, args.category)
 
     # clf_for_category = fill_category_classifier_dict(categories, 1, 10, "LinearSVC")
