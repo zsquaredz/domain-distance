@@ -11,7 +11,7 @@ if __name__ == '__main__':
     parser.add_argument("--data_dir", type=str, default='./data/', help="Directory of data")
     parser.add_argument("--reviews_per_class", type=int, default=1000, help="Number of reviews per class")
     args = parser.parse_args()
-    categories = ["Books", "Electronics", "Movies_and_TV", "CDs_and_Vinyl", "Clothing_Shoes_and_Jewelry",
+    categories = ["Appliances", "Books", "Electronics", "Movies_and_TV", "CDs_and_Vinyl", "Clothing_Shoes_and_Jewelry",
                   "Home_and_Kitchen", "Kindle_Store", "Sports_and_Outdoors", "Cell_Phones_and_Accessories",
                   "Health_and_Personal_Care", "Toys_and_Games", "Video_Games", "Tools_and_Home_Improvement",
                   "Beauty", "Apps_for_Android", "Office_Products", "Pet_Supplies", "Automotive",
