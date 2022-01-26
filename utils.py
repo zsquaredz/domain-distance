@@ -3,9 +3,9 @@ import os
 from sklearn.metrics import mutual_info_score
 
 
-def load_existing_dataset(category):
-    reviews_pattern = "data/X_" + category + "_5.pkl"
-    labels_pattern = "data/y_" + category + "_5.pkl"
+def load_existing_dataset(data_dir, category):
+    reviews_pattern = os.path.join(data_dir, "/X_" + category + "_5.pkl")
+    labels_pattern = os.path.join(data_dir, "y_" + category + "_5.pkl")
     with open(reviews_pattern, 'rb') as f:
         reviews = pickle.load(f)
     with open(labels_pattern, 'rb') as f:

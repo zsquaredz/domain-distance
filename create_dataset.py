@@ -1,6 +1,7 @@
 import pandas as pd
 import gzip
 import pickle
+import os
 
 
 # This class is designed to extract the data out of Julian McAuley dataset
@@ -38,9 +39,9 @@ class DataProvider:
 class ReviewDataProvider(DataProvider):
     def __init__(self, data_dir, category):
         super().__init__(category)
-        self.data_path = "{}/reviews_{}_5.json.gz".format(data_dir, self.category)
-        self.reviews_path = "{}/X_{}_5.pkl".format(data_dir, self.category)
-        self.labels_path = "{}/y_{}_5.pkl".format(data_dir, self.category)
+        self.data_path = os.path.join(data_dir, "reviews_{}_5.json.gz".format(self.category))
+        self.reviews_path = os.path.join(data_dir, "X_{}_5.pkl".format(self.category))
+        self.labels_path = os.path.join(data_dir, "y_{}_5.pkl".format(self.category))
 
 
     def balance_dataset(self, df, max_length):
