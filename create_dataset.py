@@ -37,15 +37,12 @@ class DataProvider:
             i += 1
         return pd.DataFrame.from_dict(df, orient='index')
 
-        # with gzip.open(path, 'rb') as f:
-        #     for l in f:
-        #         df[i]
-
 
 
 class ReviewDataProvider(DataProvider):
     def __init__(self, data_dir, category):
         super().__init__(category)
+        self.data_dir = data_dir
         self.data_path = os.path.join(data_dir, "{}_5.json.gz".format(self.category))
         self.reviews_path = os.path.join(data_dir, "X_{}_5.pkl".format(self.category))
         self.labels_path = os.path.join(data_dir, "y_{}_5.pkl".format(self.category))
@@ -69,6 +66,15 @@ class ReviewDataProvider(DataProvider):
         reviews = neg_reviews + pos_reviews
         labels = [0] * min_length + [1] * min_length
         return reviews, labels
+    
+    def create_json(self, reviews, labels, json_filename):
+        json_path = os.path.join(self.data_dir, json_filename)
+        assert len(reviews) == len(labels)
+        with open(json_path, 'w', encoding='utf-8') as f:
+            for i in range(len(reviews)):
+                data = {'text':reviews[i], 'label':labels[i]}
+                f.write(json.dumps(data) + '\n')
+
 
     def construct_dataset(self, sample_size):
         reviews_df = self.get_all_data_points()
