@@ -2,6 +2,7 @@ import pandas as pd
 import gzip
 import pickle
 import os
+import json
 
 
 # This class is designed to extract the data out of Julian McAuley dataset
@@ -22,7 +23,7 @@ class DataProvider:
         g = gzip.open(path, 'rb')
         for l in g:
             if count < max_extract:
-                yield eval(l)
+                yield json.loads(l)
             else:
                 return
             count += 1
@@ -35,6 +36,11 @@ class DataProvider:
             df[i] = d
             i += 1
         return pd.DataFrame.from_dict(df, orient='index')
+
+        # with gzip.open(path, 'rb') as f:
+        #     for l in f:
+        #         df[i]
+
 
 
 class ReviewDataProvider(DataProvider):
