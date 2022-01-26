@@ -83,7 +83,7 @@ class ReviewDataProvider(DataProvider):
             open(label_path, 'w', encoding='utf-8') as f_label:
             for i in range(len(reviews)):
                 f.write(reviews[i] + '\n')
-                f_label.write(labels[i] + '\n')
+                f_label.write(str(labels[i]) + '\n')
 
 
     def construct_dataset(self, sample_size):
