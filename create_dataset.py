@@ -5,7 +5,6 @@ import pickle
 
 # This class is designed to extract the data out of Julian McAuley dataset
 class DataProvider:
-
     def __init__(self, category):
         self.category = category
 
@@ -16,7 +15,7 @@ class DataProvider:
     @staticmethod
     def parse_from_gzip(path):
         # for memory issues
-        max_extract = 100000
+        max_extract = 10000000
         count = 0
         g = gzip.open(path, 'rb')
         for l in g:
@@ -25,7 +24,6 @@ class DataProvider:
             else:
                 return
             count += 1
-
 
     @staticmethod
     def get_df(path):
@@ -38,11 +36,11 @@ class DataProvider:
 
 
 class ReviewDataProvider(DataProvider):
-    def __init__(self, category):
+    def __init__(self, data_dir, category):
         super().__init__(category)
-        self.data_path = "data/reviews_{}_5.json.gz".format(self.category)
-        self.reviews_path = "data/X_{}_5.pkl".format(self.category)
-        self.labels_path = "data/y_{}_5.pkl".format(self.category)
+        self.data_path = "{}/reviews_{}_5.json.gz".format(data_dir, self.category)
+        self.reviews_path = "{}/X_{}_5.pkl".format(data_dir, self.category)
+        self.labels_path = "{}/y_{}_5.pkl".format(data_dir, self.category)
 
 
     def balance_dataset(self, df, max_length):
