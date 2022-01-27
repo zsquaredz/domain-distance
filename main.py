@@ -22,9 +22,9 @@ if __name__ == '__main__':
                   "Grocery_and_Gourmet_Food", "Patio_Lawn_and_Garden", "Baby", "Digital_Music", "Amazon_Instant_Video"]
     
     assert args.category in categories
+    rdp = ReviewDataProvider(args.data_dir, args.category)
     if not args.just_create_split:
         print('constructing dataset from gz files')
-        rdp = ReviewDataProvider(args.data_dir, args.category)
         reviews, labels = rdp.construct_dataset(args.reviews_per_class)
     
     X_train, y_train, X_val, y_val, X_test, y_test = utils.load_existing_dataset_and_create_splits(
