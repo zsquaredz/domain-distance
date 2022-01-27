@@ -72,7 +72,7 @@ class ReviewDataProvider(DataProvider):
         assert len(reviews) == len(labels)
         with open(json_path, 'w', encoding='utf-8') as f:
             for i in range(len(reviews)):
-                data = {'text':str(reviews[i]), 'label':labels[i]}
+                data = {'text':str(reviews[i]).replace('\n', ' '), 'label':labels[i]}
                 f.write(json.dumps(data) + '\n')
     
     def create_txt(self, reviews, labels, review_filename, label_filename):
@@ -82,7 +82,7 @@ class ReviewDataProvider(DataProvider):
         with open(txt_path, 'w', encoding='utf-8') as f,\
             open(label_path, 'w', encoding='utf-8') as f_label:
             for i in range(len(reviews)):
-                f.write(str(reviews[i]) + '\n')
+                f.write(str(reviews[i]).replace('\n', ' ') + '\n')
                 f_label.write(str(labels[i]) + '\n')
 
 
