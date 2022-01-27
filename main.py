@@ -33,12 +33,15 @@ if __name__ == '__main__':
         args.train_size,
         args.val_size,
         args.test_size)
-    rdp.create_json(X_train, y_train, 'Train_'+str(args.train_size)+args.category+'.json')
-    rdp.create_txt(X_train, y_train, 'Train_'+str(args.train_size)+args.category+'.txt', 'Train_'+str(args.train_size)+args.category+'_label.txt')
-    rdp.create_json(X_val, y_val, 'Val_'+str(args.val_size)+args.category+'.json')
-    rdp.create_txt(X_val, y_val, 'Val_'+str(args.val_size)+args.category+'.txt', 'Val_'+str(args.val_size)+args.category+'_label.txt')
-    rdp.create_json(X_test, y_test, 'Test_'+str(args.test_size)+args.category+'.json')
-    rdp.create_txt(X_test, y_test, 'Test_'+str(args.test_size)+args.category+'.txt', 'Test_'+str(args.test_size)+args.category+'_label.txt')
+    rdp.create_json(X_train, y_train, 'Train_'+str(args.train_size)+'_'+args.category+'.json')
+    rdp.create_txt(X_train, y_train, 'Train_'+str(args.train_size)+'_'+args.category+'.txt', 
+                    'Train_'+str(args.train_size)+'_'+args.category+'_label.txt')
+    rdp.create_json(X_val, y_val, 'Val_'+str(args.val_size)+'_'+args.category+'.json')
+    rdp.create_txt(X_val, y_val, 'Val_'+str(args.val_size)+'_'+args.category+'.txt', 
+                    'Val_'+str(args.val_size)+'_'+args.category+'_label.txt')
+    rdp.create_json(X_test, y_test, 'Test_'+str(args.test_size)+'_'+args.category+'.json')
+    rdp.create_txt(X_test, y_test, 'Test_'+str(args.test_size)+'_'+args.category+'.txt', 
+                    'Test_'+str(args.test_size)+'_'+args.category+'_label.txt')
     # print(X_train)
     # print(y_train)
 
