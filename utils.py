@@ -1,6 +1,7 @@
 import pickle
 import os
 from sklearn.metrics import mutual_info_score
+import random
 
 
 def load_existing_dataset(data_dir, category):
@@ -31,6 +32,60 @@ def load_existing_dataset(data_dir, category):
                 y_test.append(labels[i])
             pos_count += 1
     return X_train, y_train, X_test, y_test
+
+
+
+def load_existing_dataset_and_create_splits(data_dir, category, train_size, val_size, test_size, shuffle=True):
+    reviews_pattern = os.path.join(data_dir, "X_" + category + "_5.pkl")
+    labels_pattern = os.path.join(data_dir, "y_" + category + "_5.pkl")
+    with open(reviews_pattern, 'rb') as f:
+        reviews = pickle.load(f)
+    with open(labels_pattern, 'rb') as f:
+        labels = pickle.load(f)
+    assert len(reviews) >= (train_size+val_size+test_size), "you have less data than total number of splits you want to create"
+    X_train, y_train, X_val, y_val, X_test, y_test = [], [], [], [], [], []
+    train_pos_count = 0
+    train_neg_count = 0
+    val_pos_count = 0
+    val_neg_count = 0
+    test_pos_count = 0
+    test_neg_count = 0
+    for i in range(len(reviews)):
+        if labels[i] == 0:
+            if train_neg_count < train_size//2:
+                X_train.append(reviews[i])
+                y_train.append(labels[i])
+                train_neg_count += 1
+            elif val_neg_count < val_size//2:
+                X_val.append(reviews[i])
+                y_val.append(labels[i])
+                val_neg_count += 1
+            elif test_neg_count < test_size//2:
+                X_test.append(reviews[i])
+                y_test.append(labels[i])
+                test_neg_count += 1
+            else:
+                pass
+        elif labels[i] == 1:
+            if train_pos_count < train_size//2:
+                X_train.append(reviews[i])
+                y_train.append(labels[i])
+                train_pos_count += 1
+            elif val_pos_count < val_size//2:
+                X_val.append(reviews[i])
+                y_val.append(labels[i])
+                val_pos_count += 1
+            elif test_pos_count < test_size//2:
+                X_test.append(reviews[i])
+                y_test.append(labels[i])
+                test_pos_count += 1
+            else:
+                pass
+    assert len(X_train) == train_size
+    assert len(X_val) == val_size
+    assert len(X_test) == test_size
+    
+    return X_train, y_train, X_val, y_val, X_test, y_test
 
 
 def save_file(path, file):
