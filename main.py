@@ -19,7 +19,9 @@ if __name__ == '__main__':
                   "Home_and_Kitchen", "Kindle_Store", "Sports_and_Outdoors", "Cell_Phones_and_Accessories",
                   "Health_and_Personal_Care", "Toys_and_Games", "Video_Games", "Tools_and_Home_Improvement",
                   "Beauty", "Apps_for_Android", "Office_Products", "Pet_Supplies", "Automotive",
-                  "Grocery_and_Gourmet_Food", "Patio_Lawn_and_Garden", "Baby", "Digital_Music", "Amazon_Instant_Video"]
+                  "Grocery_and_Gourmet_Food", "Patio_Lawn_and_Garden", "Baby", "Digital_Music", "Amazon_Instant_Video",
+                  "Arts_Crafts_and_Sewing", "Industrial_and_Scientific", "Luxury_Beauty", "Musical_Instruments",
+                  "Prime_Pantry", "Software"]
     
     assert args.category in categories
     rdp = ReviewDataProvider(args.data_dir, args.category)
