@@ -15,13 +15,16 @@ if __name__ == '__main__':
     parser.add_argument("--test_size", type=int, default=1000, help="Test size desired to get")
     parser.add_argument("--just_create_split", action='store_true', help="whether to just create split")
     args = parser.parse_args()
-    categories = ["Appliances", "Books", "Electronics", "Movies_and_TV", "CDs_and_Vinyl", "Clothing_Shoes_and_Jewelry",
+    categories = ["Books", "Electronics", "Movies_and_TV", "CDs_and_Vinyl", "Clothing_Shoes_and_Jewelry",
                   "Home_and_Kitchen", "Kindle_Store", "Sports_and_Outdoors", "Cell_Phones_and_Accessories",
-                  "Health_and_Personal_Care", "Toys_and_Games", "Video_Games", "Tools_and_Home_Improvement",
-                  "Beauty", "Apps_for_Android", "Office_Products", "Pet_Supplies", "Automotive",
-                  "Grocery_and_Gourmet_Food", "Patio_Lawn_and_Garden", "Baby", "Digital_Music", "Amazon_Instant_Video",
-                  "Arts_Crafts_and_Sewing", "Industrial_and_Scientific", "Luxury_Beauty", "Musical_Instruments",
-                  "Prime_Pantry", "Software"]
+                  "Toys_and_Games", "Video_Games", "Tools_and_Home_Improvement",
+                  "Office_Products", "Pet_Supplies", "Automotive",
+                  "Grocery_and_Gourmet_Food", "Patio_Lawn_and_Garden", "Digital_Music",
+                  "Arts_Crafts_and_Sewing", "Musical_Instruments", "Prime_Pantry"]
+    
+    # above categories are taken from https://nijianmo.github.io/amazon/index.html : "Small" subsets for experimentation
+    # excluding: Amazon Fashion, All Beauty, Appliances, Gift Cards, Industrial and Scientific, Luxury Beauty,
+    # Magazine Subscriptions, Software
     
     assert args.category in categories
     rdp = ReviewDataProvider(args.data_dir, args.category)
