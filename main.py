@@ -19,12 +19,11 @@ if __name__ == '__main__':
                   "Home_and_Kitchen", "Kindle_Store", "Sports_and_Outdoors", "Cell_Phones_and_Accessories",
                   "Toys_and_Games", "Video_Games", "Tools_and_Home_Improvement",
                   "Office_Products", "Pet_Supplies", "Automotive",
-                  "Grocery_and_Gourmet_Food", "Patio_Lawn_and_Garden", "Digital_Music",
-                  "Arts_Crafts_and_Sewing", "Musical_Instruments", "Prime_Pantry"]
+                  "Grocery_and_Gourmet_Food", "Patio_Lawn_and_Garden", "Arts_Crafts_and_Sewing", "Musical_Instruments"]
     
-    # above categories are taken from https://nijianmo.github.io/amazon/index.html : "Small" subsets for experimentation
-    # excluding: Amazon Fashion, All Beauty, Appliances, Gift Cards, Industrial and Scientific, Luxury Beauty,
-    # Magazine Subscriptions, Software
+    # above categories (19 domains) are taken from https://nijianmo.github.io/amazon/index.html : "Small" subsets for experimentation
+    # excluding: Amazon Fashion, All Beauty, Appliances, Digital_Music, Gift Cards, Industrial and Scientific, Luxury Beauty,
+    # Magazine Subscriptions, Prime_Pantry, Software
     
     assert args.category in categories
     rdp = ReviewDataProvider(args.data_dir, args.category)
